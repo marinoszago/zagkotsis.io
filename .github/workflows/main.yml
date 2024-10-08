@@ -25,6 +25,6 @@ jobs:
     - name: connect and docker create
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && docker build -t zagkotsis.io:latest -f deployment/Dockerfile . && exit"
     - name: connect and docker run
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && docker stop zagkotsis.io || true && docker rm zagkotsis.io || true && docker run -d --name zagkotsis.io -p 8081:80 zagkotsis.io:latest && exit"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && docker stop zagkotsis.io || true && docker rm zagkotsis.io || true && docker run -d --name zagkotsis.io -p 3000:80 zagkotsis.io:latest && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
